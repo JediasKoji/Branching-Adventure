@@ -1,4 +1,4 @@
-public class Choice{
+public class ChoiceOriginal{
 
    private String prompt;
    private String choice1;
@@ -7,7 +7,7 @@ public class Choice{
    int area2;
    boolean death;
 
-   public Choice(int area){
+   public ChoiceOriginal(int area){
       if(area == 1){
          this.prompt = "The dots of purple trail off leading to a small table.  Atop the table are two drinks, a frothy green one and a swirling red.  Which one do you drink?";
          this.choice1 = "The red one.";
@@ -141,21 +141,73 @@ public class Choice{
          this.area2 = 25;
       }
       else if(area == 21){
+         this.prompt = "You push on through the corridor. Unfortunately, you encounter a hostile suit of armour. As you attempt to escape your legs give out.";
+         this.choice1 = "die?";
+         this.choice2 = "die?";
+         this.death = true;
+      }
+      else if(area == 22){
+         this.prompt = "Nothing happens, you look like an idiot. What now?";
+         this.choice1 = "Kill yourself.";
+         this.choice2 = "Move on.";
+         this.area1 = 26;
+         this.area2 = 27;
+      }
+      else if(area == 23){
+         this.prompt = "The angel statue falls and kills you. Maybe you should've flirted with it.";
+         this.choice1 = "die?";
+         this.choice2 = "die?";
+         this.death = true;
+      }
+      else if(area == 24){
+         this.prompt = "You encounter a hostile suit of armor but you easily juke it out of its' shoes. Two corridors lie past the suit.";
+         this.choice1 = "Left?";
+         this.choice2 = "Right?";
+         this.area1 = 28;
+         this.area2 = 29;
+      }
+      else if(area == 25){
+         this.prompt = "Surprisingly, you aren't dead. Hurry up and get a move on.";
+         this.choice1 = "Continue down Corridor.";
+         this.choice2 = "Take a nap.";
+         this.area1 = 24;
+         this.area2 = 30;
+      }
+      else if(area == 26){
+         this.prompt = "Congradulations, you've died of embarrasment. Now get a move on.";
+         this.choice1 = "Move on.";
+         this.choice2 = "For the love on shrooms, move on.";
+         this.area1 = 27;
+         this.area2 = 27;
+      }
+      else if(area == 27){
+         this.prompt = "You open the door at the other side of room. There's a paper stuck to the wall across from you.";
+         this.choice1 = "Read the paper?";
+         this.choice2 = "Go straight through room to the door on your right.";
+         this.area1 = 31;
+         this.area2 = 32;
+      }
+      else if(area == 28){
+         this.prompt = "You enter an area that appears to be a dungeon. Light is scarce and dark figures dance at the edge of your vision.";
+         this.choice1 = "Run as fast as you can to the exit at the end of the ";
+         this.choice2 = "";
+      }
+      else if(area == 29){
          this.prompt = "";
          this.choice1 = "";
          this.choice2 = "";
       }
-      else if(area == 21){
+      else if(area == 24){
          this.prompt = "";
          this.choice1 = "";
          this.choice2 = "";
       }
-      else if(area == 21){
+      else if(area == 24){
          this.prompt = "";
          this.choice1 = "";
          this.choice2 = "";
       }
-      else if(area == 21){
+      else if(area == 24){
          this.prompt = "";
          this.choice1 = "";
          this.choice2 = "";
@@ -164,8 +216,10 @@ public class Choice{
          
       }
    }
-   public String askChoice(){
-      return prompt;
+   public void askChoice(){
+      System.out.println(this.prompt);
+      System.out.println(this.choice1);
+      System.out.println(this.choice2);
       
       
    }

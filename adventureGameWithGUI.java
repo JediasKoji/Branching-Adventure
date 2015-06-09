@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class adventureGame{
+public class adventureGameWithGUI{
 
    public static void main(String[] args) throws FileNotFoundException{
       Scanner intro = new Scanner(new File("AdventureIntro"));
@@ -14,15 +14,40 @@ public class adventureGame{
       int areaStart = 1;
     
       while(pla.isAlive()){
-         ChoiceOriginal option = new ChoiceOriginal(areaStart);
-         option.askChoice();
-       
-         String a = console.nextLine();
-       
+         Choice option = new Choice(areaStart);
+         JFrame frame = new JFrame();
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         frame.setSize(new Dimension(300, 125));
+         frame.setTitle("Choice Adventure Game");
+         
+         JLabel question = new JLabel(option.askChoice());
+         frame.add(question);
+         
+         JButton button1 = new JButton();
+         button1.setText(option.presentChoice1());
+         button1.setBackground(Color.RED);
+         button1.addActionListener(new MessageListener());
+         frame.add(button1);
+         
+         JButton button2 = new JButton();
+         button2.setText(option.presentChoice2());
+         button2.setBackground(Color.GREEN);
+         button2.addActionListener(new MessageListener2());
+         frame.add(button2);
+         
+         frame.pack();
+         frame.setLayout(new FlowLayout());
+         frame.setVisible(true);
+         
+         Scanner oneOrTwo = new Scanner (new File("OneorTwo.txt"));
+         String a = oneOrTwo.nextLine();
+         
+         
          while(!(a.equals("1")) && !(a.equals("2"))){
             System.out.println("Please Enter 1 or 2");
             a = console.nextLine();
          }
+         
          int added = Integer.parseInt(a);
          areaStart = option.getArea(added);
          
@@ -58,7 +83,7 @@ public class adventureGame{
          System.out.println(setting.nextLine());
       }
       return option;
-
+   
    
    }
 }
