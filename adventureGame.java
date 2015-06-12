@@ -81,7 +81,7 @@ public class adventureGame{
    }
    
    public static void win(Player pla){
-      System.out.println("Congratulations" + pla.getName());
+      System.out.println("Congratulations " + pla.getName());
       System.out.println("You have beaten our mildly amazing, unbelievably mediocre game.");
       System.out.println("Good Job. You get a sticker... An imaginary one.");
       System.out.println("Play again?");

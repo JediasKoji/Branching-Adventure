@@ -339,6 +339,7 @@ public class ChoiceOriginal{
          this.prompt = "He stabs you anyway.";
          this.choice1 = "die?";
          this.choice2 = "die";
+         this.death = true;
       
       }
       else if(area == 50){
