@@ -26,11 +26,9 @@ public class adventureGame{
          int added = Integer.parseInt(a);
          areaStart = option.getArea(added);
          
-         pla.kill(option.getIsDead());
-         if(pla.isAlive() == false){
-            System.out.println("Nobody found the body. Try Again? Yes or No");
+         if(option.getWin()){
+            win(pla);
             String ans = console.nextLine();
-            
             while(!(ans.equalsIgnoreCase("yes")) && !(ans.equalsIgnoreCase("no"))){
                System.out.println("Do you know how to spell? It's yes.. or no..");
                ans = console.nextLine();
@@ -42,7 +40,27 @@ public class adventureGame{
             }
             else{
                System.out.println("Quite unfortunate.");
-            }       
+            } 
+         }
+         else{
+            pla.kill(option.getIsDead());
+            if(pla.isAlive() == false){
+               System.out.println("Nobody found the body. Try Again? Yes or No");
+               String ans = console.nextLine();
+            
+               while(!(ans.equalsIgnoreCase("yes")) && !(ans.equalsIgnoreCase("no"))){
+                  System.out.println("Do you know how to spell? It's yes.. or no..");
+                  ans = console.nextLine();
+               } 
+            
+               if(ans.equalsIgnoreCase("yes")){
+                  areaStart = 1;
+                  pla.revive();
+               }
+               else{
+                  System.out.println("Quite unfortunate.");
+               }       
+            }
          }
       }
    }
@@ -54,11 +72,18 @@ public class adventureGame{
    
       String borg = console.nextLine();
       Player option = new Player(borg);
+      
       while(setting.hasNextLine()){
          System.out.println(setting.nextLine());
       }
       return option;
-
    
+   }
+   
+   public static void win(Player pla){
+      System.out.println("Congratulations" + pla.getName());
+      System.out.println("You have beaten our mildly amazing, unbelievably mediocre game.");
+      System.out.println("Good Job. You get a sticker... An imaginary one.");
+      System.out.println("Play again?");
    }
 }
